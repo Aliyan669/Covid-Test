@@ -75,8 +75,19 @@
                 <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about" class="nav-link">About</a></li>
                 <li class="{{ Request::is('blog') ? 'active' : '' }}"><a href="/blog" class="nav-link">Blog</a></li>
                 <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact" class="nav-link">Contact</a></li>
+
+                @if (Auth::check() && Auth::user()->role == 'User')
+                <li><a href="#" class="nav-link auth">{{Auth::user()->name}}</a></li>
+                <li><a  > <form action="/logout" method="post">
+                                @csrf
+                                <input class="nav-link btn btn-primary-outline" type="submit" value="Logout">
+                            </form></a></li>
+                @else
                 <li ><p><a href="/login" class="nav-link btn btn-primary-outline">Login</a></p></li>
                 <li><p><a href="/register" class="nav-link btn btn-primary ">Register</p></a></li>
+
+                @endif
+               
 
               </ul>
             </nav>

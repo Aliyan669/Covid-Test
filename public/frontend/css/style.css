@@ -16,6 +16,9 @@ body {
   background: #000;
   color: #fff; }
 
+.auth{
+  color: #6f42c1 !important;
+}
 a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
