@@ -26,13 +26,13 @@
 
 
 
-    <div class="container-scroller">
+    <div class="container-scroller">    
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center  pl-4 pt-2">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center  pl-4 ">
                 <!-- <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a> -->
-                <h4>Covid Test.</h4>
+               <a href="#"><img width="130px" src="{{ asset('frontend/images/Covid.png')}}" alt="" srcset=""></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -106,8 +106,8 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="{{ asset('backend/images/faces/face28.jpg')}}" alt="profile" />
                         </a>
-                        <h5>Aliyan</h5  >
-                        
+                        <h5>Aliyan</h5>
+
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
@@ -115,10 +115,10 @@
                                 Settings
                             </a>
                             <a class="dropdown-item">
-                            <form action="/logout" method="post">
-                                @csrf
-                                <i class="ti-power-off text-primary"></i><input type="submit"  value="Logout">
-                            </form>
+                                <form action="/logout" method="post">
+                                    @csrf
+                                    <i class="ti-power-off text-primary"></i><input type="submit" value="Logout">
+                                </form>
                             </a>
                         </div>
                     </li>
@@ -323,31 +323,47 @@
             </div>
             <!-- partial -->
             <!-- partial:partials/_sidebar.html -->
-            
+
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-            @if (Auth::check() && Auth::user()->role == 'User')
-                    <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">User</span>
-                        </a>
-                    </li>
-            @elseif(Auth::check() && Auth::user()->role == 'admin')
-            <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Admin</span>
-                        </a>
-                </li>
-            @elseif(Auth::check() && Auth::user()->role == 'hospital')
-            <li class="nav-item">
-                        <a class="nav-link" href="/dashboard">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Hospital</span>
-                        </a>
-                </li>
-            @endif
+                    @if (Auth::check() && Auth::user()->role == 'User')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">
+                                <i class="icon-grid menu-icon"></i>
+                                <span class="menu-title">User</span>
+                            </a>
+                        </li>
+                    @elseif(Auth::check() && Auth::user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">
+                                <i class="icon-grid menu-icon"></i>
+                                <span class="menu-title">Admin</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="icon-head menu-icon"></i>
+                                <span class="menu-title">All Patients   </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                                aria-controls="ui-basic">
+                                <i class="icon-thermometer menu-icon"></i>
+                                <span class="menu-title">Hospital</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="ui-basic">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="pages/ui-features/buttons.html">Add Hospital</a></li>
+                                    <li class="nav-item"> <a class="nav-link"
+                                            href="pages/ui-features/dropdowns.html">All Hospital</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endif
                     <!-- <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
@@ -376,7 +392,7 @@
             @yield('homeContent')
 
 
-            
+
 
 
 

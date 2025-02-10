@@ -570,3 +570,7 @@
 .icon-ellipsis:before {
   content: "\e129";
 }
+
+.icon-hospital:before {
+  content: "\e900"; /* Replace this with correct Unicode */
+}

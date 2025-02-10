@@ -53,7 +53,7 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2">
-            <div class="mb-0 site-logo"><a href="index.html" class="mb-0">Covid<span class="text-primary">.</span> </a>
+            <div class="mb-0 mt-1 site-logo"><a href="/" class="mb-0"><img width="150px" src="{{ asset('frontend/images/Covid.png')}}" alt="" srcset=""> </a>
             </div>
           </div>
 
