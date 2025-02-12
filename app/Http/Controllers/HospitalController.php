@@ -12,7 +12,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        return view('pages.backend.allHospitals');
+        $hospital =DB::select("select * from hospitals");
+        return view('pages.backend.allHospitals', compact('hospital'));
 
     }
 
@@ -22,7 +23,7 @@ class HospitalController extends Controller
     public function create()
     {
 
-              return view('pages.backend.addHospitals');
+        return view('pages.backend.addHospitals');
 
     }
 
@@ -31,10 +32,36 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        $name =  $request->hospital_name;
+
+        // $request->validate([
+        //     'hospital_name'=> 'required'
+        // ]);
+
+
+
         $id = uniqid();
-        DB::select('INSERT INTO `hospitals` (`hospital_name`, `created_at`, `updated_at`, `status`) VALUES ("'.$name.'", CURRENT_TIMESTAMP, NULL, "Active");');
-        return redirect('/dashboard/hospital/create');
+        $name = $request->hospital_name;
+        $type = $request->hospital_type;
+        $address = $request->address;
+        $phone_number = $request->phone_number;
+        $city = $request->city;
+        $country = $request->country;
+        $website = $request->website;
+        $admin_name = $request->admin_name;
+        $admin_email = $request->admin_email;
+
+
+
+        // DB::select('INSERT INTO `hospitals` (`hospital_name`, `created_at`, `updated_at`, `status`) VALUES ("'.$name.'", CURRENT_TIMESTAMP, NULL, "Active");');
+
+        DB::select('INSERT INTO `hospitals` (`hospital_name`, `hospital_type`, `address`, `phone_number`, `city`, `country`, `logo`, `website`, `admin_name`, `admin_email`, `created_at`, `updated_at`, `status`) VALUES ("' . $name . '", "' . $type . '", "' . $address . '", 22 ,"' . $city . '", "' . $country . '", "image" , "' . $website . '", "' . $admin_name . '", "' . $admin_email . '", CURRENT_TIMESTAMP, NULL, "Active");');
+
+
+        return redirect('/dashboard/hospital/create')->with([
+            'message' => 'Hospital added successfully!',
+            'type' => 'success'
+        ]);
+        ;
     }
 
     /**

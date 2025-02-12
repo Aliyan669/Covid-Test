@@ -7,12 +7,23 @@ use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Controller
-Route::get('/',[HomeController::class, "Home"]);
-Route::get('prevention',[HomeController::class, "Prevention"]);
-Route::get('symptoms',[HomeController::class, "Symptoms"]);
-Route::get('about',[HomeController::class, "About"]);
-Route::get('blog',[HomeController::class, "Blog"]);
-Route::get('contact',[HomeController::class, "Contact"]);
+// Route::get('/',[HomeController::class, "Home"]);
+// Route::get('prevention',[HomeController::class, "Prevention"]);
+// Route::get('symptoms',[HomeController::class, "Symptoms"]);
+// Route::get('about',[HomeController::class, "About"]);
+// Route::get('blog',[HomeController::class, "Blog"]);
+// Route::get('contact',[HomeController::class, "Contact"]);
+
+
+// Frontend Controller with Grouping 
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/', "Home");
+    Route::get('prevention', "Prevention");
+    Route::get('symptoms', "Symptoms");
+    Route::get('about', "About");
+    Route::get('blog', "Blog");
+    Route::get('contact', "Contact");
+});
 
 
 // Backend Controller

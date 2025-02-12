@@ -15,6 +15,15 @@ return new class extends Migration
             $table->engine = "InnoDB";
             $table->id()->autoIncrement()->primary();
             $table->string('hospital_name',50);
+            $table->string('hospital_type',50);
+            $table->string('address',50);
+            $table->integer('phone_number');
+            $table->string('city',50);
+            $table->string('country',50);
+            $table->string('logo',50);
+            $table->string('website',100);
+            $table->string('admin_name',50);
+            $table->string('admin_email',50);
             $table->timestamps();
             $table->string('status',30);
         });
