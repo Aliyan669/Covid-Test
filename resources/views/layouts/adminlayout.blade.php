@@ -26,13 +26,13 @@
 
 
 
-    <div class="container-scroller">    
+    <div class="container-scroller">
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center  pl-4 ">
                 <!-- <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a> -->
-               <a href="#"><img width="130px" src="{{ asset('frontend/images/Covid.png')}}" alt="" srcset=""></a>
+                <a href="#"><img width="130px" src="{{ asset('frontend/images/Covid.png')}}" alt="" srcset=""></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -106,7 +106,7 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="{{ asset('backend/images/faces/face28.jpg')}}" alt="profile" />
                         </a>
-                        <h5>Aliyan</h5>
+                        <h5 class="mt-2 ml-2 mr-3">{{Auth::user()->name}}</h5>
 
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
@@ -117,7 +117,9 @@
                             <a class="dropdown-item">
                                 <form action="/logout" method="post">
                                     @csrf
-                                    <i class="ti-power-off text-primary"></i><input type="submit" value="Logout">
+                                    <i class="ti-power-off text-primary"></i><input
+                                        style="background: none; border: none; color: inherit;  cursor: pointer; padding: 0;"
+                                        type="submit" value="Logout">
                                 </form>
                             </a>
                         </div>
@@ -342,9 +344,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="#">
                                 <i class="icon-head menu-icon"></i>
-                                <span class="menu-title">All Patients   </span>
+                                <span class="menu-title">All Patients </span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -356,10 +358,10 @@
                             </a>
                             <div class="collapse" id="ui-basic">
                                 <ul class="nav flex-column sub-menu">
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="pages/ui-features/buttons.html">Add Hospital</a></li>
-                                    <li class="nav-item"> <a class="nav-link"
-                                            href="pages/ui-features/dropdowns.html">All Hospital</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="/dashboard/hospital/create">Add
+                                            Hospital</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="/dashboard/hospital">All
+                                            Hospital</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -388,20 +390,25 @@
 
 
 
-
-            @yield('homeContent')
-
-
+            <!-- partial -->
+            <div class="main-panel">
 
 
-
+                @yield('homeContent')
 
 
 
 
-
-
-
+                <!-- partial:partials/_footer.html -->
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025.
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by
+                                <a href="#"></a></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
 
 
             <!-- plugins:js -->

@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HospitalController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Controller
@@ -35,3 +36,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard', [AdminController::class, "Home"])->name('dashboard');
 });
+
+// Route::get('/dashboard/allhospital',  [hospitalController::class, 'index']);
+// Route::get('/dashboard/addhospital', [hospitalController::class,'create']);
+Route::resource('/dashboard/hospital', HospitalController::class);
+

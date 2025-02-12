@@ -1,8 +1,8 @@
 @extends('layouts.adminlayout')
 
 @section('homeContent')
-<!-- partial -->
-<div class="main-panel">
+
+
   <div class="content-wrapper">
     <div class="row">
       <div class="col-md-12 grid-margin">
@@ -97,15 +97,6 @@
   </div>
   <!-- content-wrapper ends -->
 
-  <!-- partial:partials/_footer.html -->
-  <footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-      <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025.
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="#">Aliyan
-            Amir</a></span>
-    </div>
-  </footer>
-  <!-- partial -->
-</div>
+
 
 @endsection

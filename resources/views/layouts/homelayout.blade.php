@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2926/2926534.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="{{ asset('frontend/fonts/icomoon/style.css')}}">
   <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css ')}}">
   <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.css')}}">

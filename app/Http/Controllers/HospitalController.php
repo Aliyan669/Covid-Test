@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HospitalController extends Controller
@@ -11,7 +12,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.backend.allHospitals');
+
     }
 
     /**
@@ -19,7 +21,9 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        //
+
+              return view('pages.backend.addHospitals');
+
     }
 
     /**
@@ -27,7 +31,10 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name =  $request->hospital_name;
+        $id = uniqid();
+        DB::select('INSERT INTO `hospitals` (`hospital_name`, `created_at`, `updated_at`, `status`) VALUES ("'.$name.'", CURRENT_TIMESTAMP, NULL, "Active");');
+        return redirect('/dashboard/hospital/create');
     }
 
     /**
