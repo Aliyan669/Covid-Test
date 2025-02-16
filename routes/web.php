@@ -7,14 +7,6 @@ use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\VaccinationController;
 use Illuminate\Support\Facades\Route;
 
-// Frontend Controller
-// Route::get('/',[HomeController::class, "Home"]);
-// Route::get('prevention',[HomeController::class, "Prevention"]);
-// Route::get('symptoms',[HomeController::class, "Symptoms"]);
-// Route::get('about',[HomeController::class, "About"]);
-// Route::get('blog',[HomeController::class, "Blog"]);
-// Route::get('contact',[HomeController::class, "Contact"]);
-
 
 // Frontend Controller with Grouping 
 Route::controller(HomeController::class)->group(function () {
@@ -26,21 +18,6 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('contact', "Contact");
 });
 
-
-// Backend Controller
-// Route::get('/',[AdminController::class, "Home"]);
-
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -49,10 +26,7 @@ Route::middleware([
     Route::get('/dashboard', [AdminController::class, "Home"])->name('dashboard');
 });
 
-// Route::get('/dashboard/allhospital',  [hospitalController::class, 'index']);
-// Route::get('/dashboard/addhospital', [hospitalController::class,'create']);
 Route::resource('/dashboard/hospital', HospitalController::class)->middleware('auth');
-
 Route::resource('/dashboard/vaccination', VaccinationController::class)->middleware('auth');
 
 

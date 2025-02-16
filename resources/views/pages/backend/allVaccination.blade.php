@@ -148,9 +148,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
 
                             <p class="card-description">
                                 Health Info
@@ -251,7 +249,6 @@
                                     <th>Hospital</th>
                                     <th>Covid Diagnosed</th>
                                     <th>Symptoms</th>
-                                    <th>Auth Username</th>
                                     <th>Status</th>
 
                                     <th>Action</th>
@@ -278,7 +275,6 @@
                                         <td>{{  $data->hospital }}</td>
                                         <td>{{  $data->diagnosed }}</td>
                                         <td>{{  $data->symptoms }}</td>
-                                        <td>{{  $data->user_id }}</td>
                                         <td>{{  $data->status }}</td>
 
                                         <td> <button type="button" class="btn btn-success edit mr-2 btn-sm btn-icon-text"
@@ -292,13 +288,11 @@
                                                 Delete
                                             </button>
 
-
                                     </tr>
                                     @php
                 $count++;
             @endphp
                                 @endforeach
-
 
                             </tbody>
                         </table>
@@ -405,8 +399,6 @@
                 }
             });
         });
-
-
 
     });
 

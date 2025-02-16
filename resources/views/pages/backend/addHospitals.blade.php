@@ -10,7 +10,6 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
-                    <!-- <h4 class="card-title">Horizontal Two column</h4> -->
 
                     <form enctype="multipart/form-data" class="form-sample p-3" action="{{route('hospital.store')}}"
                         method="post">
@@ -146,7 +145,5 @@
             </div>
         </div>
     </div>
-
-
 
 @endsection

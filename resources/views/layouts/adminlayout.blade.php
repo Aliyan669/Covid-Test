@@ -20,7 +20,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('backend/css/vertical-layout-light/style.css')}}">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/256/6024/6024190.png?semt=ais_hybrid" />
 </head>
 
 <body>

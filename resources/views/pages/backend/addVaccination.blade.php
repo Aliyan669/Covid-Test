@@ -14,9 +14,6 @@
 
                     <form enctype="multipart/form-data" action="{{route('vaccination.store')}}" class="form-sample p-3" method="post">
                         @csrf
-                        <!-- <p class="card-description">
-                            Hospital info
-                        </p> -->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
