@@ -4,6 +4,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard</title>
     <!-- plugins:css -->
@@ -102,9 +103,11 @@
                             </a>
                         </div>
                     </li>
-                    <li class="nav-item nav-profile dropdown">
+                    <li class="nav-item nav-profile dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{ asset('backend/images/faces/face28.jpg')}}" alt="profile" />
+                            <img width="30px"
+                                src="https://cdn-icons-png.freepik.com/256/6024/6024190.png?semt=ais_hybrid"
+                                alt="profile" />
                         </a>
                         <h5 class="mt-2 ml-2 mr-3">{{Auth::user()->name}}</h5>
 
@@ -262,8 +265,8 @@
                         </div>
                         <ul class="chat-list">
                             <li class="list active">
-                                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="{{ asset('backend/images/faces/face1.jpg ')}}"
+                                        alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Thomas Douglas</p>
                                     <p>Available</p>
@@ -271,8 +274,8 @@
                                 <small class="text-muted my-auto">19 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face2.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="{{ asset('backend/images/faces/face2.jpg')}}"
+                                        alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <div class="wrapper d-flex">
                                         <p>Catherine</p>
@@ -283,8 +286,8 @@
                                 <small class="text-muted my-auto">23 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face3.jpg" alt="image"><span
-                                        class="online"></span></div>
+                                <div class="profile"><img src="{{ asset('backend/images/faces/face3.jpg')}}"
+                                        alt="image"><span class="online"></span></div>
                                 <div class="info">
                                     <p>Daniel Russell</p>
                                     <p>Available</p>
@@ -292,32 +295,16 @@
                                 <small class="text-muted my-auto">14 min</small>
                             </li>
                             <li class="list">
-                                <div class="profile"><img src="images/faces/face4.jpg" alt="image"><span
-                                        class="offline"></span></div>
+                                <div class="profile"><img src="{{ asset('backend/images/faces/face4.jpg')}}"
+                                        alt="image"><span class="offline"></span></div>
                                 <div class="info">
                                     <p>James Richardson</p>
                                     <p>Away</p>
                                 </div>
                                 <small class="text-muted my-auto">2 min</small>
                             </li>
-                            <li class="list">
-                                <div class="profile"><img src="images/faces/face5.jpg" alt="image"><span
-                                        class="online"></span></div>
-                                <div class="info">
-                                    <p>Madeline Kennedy</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">5 min</small>
-                            </li>
-                            <li class="list">
-                                <div class="profile"><img src="images/faces/face6.jpg" alt="image"><span
-                                        class="online"></span></div>
-                                <div class="info">
-                                    <p>Sarah Graves</p>
-                                    <p>Available</p>
-                                </div>
-                                <small class="text-muted my-auto">47 min</small>
-                            </li>
+
+
                         </ul>
                     </div>
                     <!-- chat tab ends -->
@@ -330,9 +317,15 @@
                 <ul class="nav">
                     @if (Auth::check() && Auth::user()->role == 'User')
                         <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">
+                            <a class="nav-link" href="/dashboard/vaccination/create">
                                 <i class="icon-grid menu-icon"></i>
-                                <span class="menu-title">User</span>
+                                <span class="menu-title">Vaccination</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard/vaccination/show">
+                                <i class="icon-grid menu-icon"></i>
+                                <span class="menu-title">Report</span>
                             </a>
                         </li>
                     @elseif(Auth::check() && Auth::user()->role == 'admin')
@@ -344,7 +337,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/dashboard/vaccination">
                                 <i class="icon-head menu-icon"></i>
                                 <span class="menu-title">All Patients </span>
                             </a>
@@ -432,6 +425,16 @@
             <script src="{{ asset('backend/js/dashboard.js ')}}"></script>
             <script src="{{ asset('backend/js/Chart.roundedBarCharts.js ')}}"></script>
             <!-- End custom js for this page-->
+            <script>
+                document.getElementById("uploadBtn").addEventListener("click", function () {
+                    document.getElementById("fileInput").click();  // File picker open karega
+                });
+
+                document.getElementById("fileInput").addEventListener("change", function () {
+                    let fileName = this.files[0] ? this.files[0].name : "No file chosen";
+                    document.getElementById("fileName").value = fileName;  // File name input field me dikhayega
+                });
+            </script>
 </body>
 
 </html>

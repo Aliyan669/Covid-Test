@@ -3,49 +3,43 @@
 @extends('layouts.adminlayout')
 
 @section('homeContent')
-    <div class="content-wrapper">
-        <!-- <x-alert-message /> -->
 
+    <div class="content-wrapper">
         <!-- Edit Modal -->
         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
             <div class="modal-dialog" style="max-width: 75%;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Hospital Detail</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Vaccination Detail</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
+
                         <form enctype="multipart/form-data" class="form-sample" id="updateForm">
                             @csrf
                             @method('PUT')
+
                             <input type="hidden" name="_method" value="PUT">
 
                             <div class="row">
-
                                 <input required type="hidden" id="e_id" name="e_id" class="form-control" />
-
-
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Hospital Name</label>
-                                        <div class="col-sm-8">
-                                            <input required type="text" id="e_hospital_name" name="e_hospital_name"
-                                                class="form-control" placeholder="Enter Hospital Name...." />
+                                        <label class="col-sm-3 col-form-label">Name</label>
+                                        <div class="col-sm-9">
+                                            <input required type="text" id="e_name" name="e_name" class="form-control"
+                                                placeholder="Enter Name...." />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Hospital Type</label>
+                                        <label class="col-sm-3 col-form-label">CNIC Number</label>
                                         <div class="col-sm-9">
-                                            <select id="e_hospital_type" name="e_hospital_type" class="form-control">
-                                                <option disabled selected>Select Type</option>
-
-                                                <option value="Private">Private</option>
-                                                <option value="Government">Government</option>
-                                            </select>
+                                            <input required type="number" id="e_cnic" name="e_cnic" class="form-control"
+                                                placeholder="Enter Cnic Number ...." />
                                         </div>
                                     </div>
                                 </div>
@@ -53,10 +47,31 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Address</label>
+                                        <label class="col-sm-3 col-form-label">Date of Birth</label>
                                         <div class="col-sm-9">
-                                            <input type="text" required id="e_address" name="e_address"
-                                                placeholder="Enter Hospital Address...." class="form-control" />
+                                            <input type="text" required id="e_dob" name="e_dob"
+                                                placeholder="Enter Date of Birth...." class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Gender:</label>
+                                        <div class="col-sm-9 mt-3 ">
+                                            <input type="radio" class="mr-1" id="e_gender" name="e_gender" value="male">Male
+                                            <input type="radio" class="ml-5" id="e_gender" name="e_gender" value="female">
+                                            Female
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" required id="e_email" name="e_email"
+                                                placeholder="Enter Email..." class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -64,84 +79,56 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Phone No.</label>
                                         <div class="col-sm-9">
-                                            <input name="e_phone_number" id="e_phone_number" required class="form-control"
-                                                placeholder="Enter Hospital Phone Number...." type="number" />
+                                            <input class="form-control" id="e_phone_number" required name="e_phone_number"
+                                                placeholder="Enter Phone Number...." type="number" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
                             <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Address</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" required id="e_address" name="e_address"
+                                                placeholder="Enter Address..." class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">City</label>
                                         <div class="col-sm-9">
-                                            <input type="text" required id="e_city" name="e_city"
-                                                placeholder="Enter Hospital City...." class="form-control" />
+                                            <input class="form-control" id="e_city" required name="e_city"
+                                                placeholder="Enter City Name...." type="text" />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Country</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" required id="e_country" name="e_country"
-                                                placeholder="Enter Hospital Country...." type="text" />
+                                            <input required type="text" id="e_country" name="e_country" class="form-control"
+                                                placeholder="Enter Country Name...." />
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Logo</label>
+                                        <label class="col-sm-3 col-form-label">Select Hospital</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="e_hospital_logo" class="file-upload-default"
-                                                id="fileInput" style="display: none;">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control file-upload-info" id="fileName"
-                                                    disabled placeholder="Upload Image">
-                                                <span class="input-group-append">
-                                                    <button class="file-upload-browse btn btn-primary" type="button"
-                                                        id="uploadBtn">Upload</button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Website</label>
-                                        <div class="col-sm-9">
-                                            <input class="form-control" required id="e_website" name="e_website"
-                                                placeholder="Enter Hospital Website...." type="text" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="card-description">
-                                Admin Info
-                            </p>
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Admin Name</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" required id="e_admin_name" name="e_admin_name"
-                                                placeholder="Enter Admin Name...." class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Admin Email</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" required id="e_admin_email" name="e_admin_email"
-                                                placeholder="Enter Admin Email...." class="form-control" />
+                                            <select name="e_hospital" id="e_hospital" class="form-control">
+                                                <option disabled selected>Select Hospital</option>
+                                                @foreach($hospitals as $item)
+                                                    <option value="{{ $item->hospital_name }}">{{ $item->hospital_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +139,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-9">
-                                            <select id="e_status" name="e_status" class="form-control">
+                                            <select id="e_status" id="e_status" name="e_status" class="form-control">
                                                 <option disabled selected>Select Type</option>
                                                 <option value="Active">Active</option>
                                                 <option alue="In Active">In Active</option>
@@ -162,6 +149,48 @@
                                 </div>
 
                             </div>
+
+
+                            <p class="card-description">
+                                Health Info
+                            </p>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="form-label col-sm-4">Have you been Diagnosed with Covid-19:</label>
+                                        <div class="col-sm-6 ">
+                                            <input type="radio" class="mr-1" id="e_diagnosed" name="e_diagnosed"
+                                                value="yes">Yes
+                                            <input type="radio" class="ml-5 mr-1" id="e_diagnosed" name="e_diagnosed"
+                                                value="no">No
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <label class="form-label col-sm-12">Please check all Symptoms that apply:</label>
+                                        <div class="col-sm-12  mt-2">
+                                            <input type="checkbox" class="mr-2" name="e_symptoms[]" value="taste">Loss of
+                                            taste/smell
+                                            <input type="checkbox" class="ml-5 mr-1" name="e_symptoms[]"
+                                                value="breathing">Difficulty Breathing
+                                            <input type="checkbox" class="ml-5 mr-1" name="e_symptoms[]" value="cough">Cough
+                                            <input type="checkbox" class="ml-5 mr-1" name="e_symptoms[]"
+                                                value="runny_nose">Runny
+                                            Nose
+                                            <input type="checkbox" class="ml-5 mr-1" name="e_symptoms[]"
+                                                value="body_aches">Body
+                                            Aches
+                                            <input type="checkbox" class="ml-5 mr-1" name="e_symptoms[]" value="throat">Sore
+                                            throat
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                     </div>
                     <div class="modal-footer">
@@ -173,7 +202,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -187,7 +215,7 @@
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to delete this hospital?</p>
-                        <input type="hidden" name="hospital_id" id="delete_hospital_id">
+                        <input type="hidden" name="hospital_id" id="delete_vaccination_id">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-danger" id="deleteForm">Delete</button>
@@ -199,49 +227,59 @@
         </div>
 
 
-        <h3 class="font-weight-bold  ml-4 mb-4">All Hospital</h3>
+        <h3 class="font-weight-bold  ml-4 mb-4">All Vaccination</h3>
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive pt-3">
 
+
                         <table class="table table-bordered">
                             <thead>
                                 <tr class="table-secondary">
                                     <th>Id</th>
-                                    <th>Logo</th>
-                                    <th>Hospital name</th>
-                                    <th>Hospital Type</th>
-                                    <th>Address</th>
+                                    <th>Name</th>
+                                    <th>CNIC Number</th>
+                                    <th>Date of Birth</th>
+                                    <th>Gender</th>
+                                    <th>Email</th>
                                     <th>Phone Number</th>
+                                    <th>Address</th>
                                     <th>City</th>
                                     <th>Country</th>
-                                    <th>Website</th>
-                                    <th>Admin Name</th>
-                                    <th>Admin Email</th>
+                                    <th>Hospital</th>
+                                    <th>Covid Diagnosed</th>
+                                    <th>Symptoms</th>
+                                    <th>Auth Username</th>
                                     <th>Status</th>
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+
 @php
     $count = 1;
 @endphp
-                                @foreach ($hospital as $data)
+
+                                @foreach ($vaccinations as $data)
                                     <tr>
                                         <td>{{ $count }}</td>
-                                        <td><img width="100px" src="{{ asset('backend/images/hospital')}}/{{ $data->logo }}">
-                                        </td>
-                                        <td>{{  $data->hospital_name }}</td>
-                                        <td>{{  $data->hospital_type }}</td>
-                                        <td>{{  $data->address }}</td>
+                                        <td>{{  $data->name }}</td>
+                                        <td>{{  $data->cnic }}</td>
+                                        <td>{{  $data->dob }}</td>
+                                        <td>{{  $data->gender }}</td>
+                                        <td>{{  $data->email }}</td>
                                         <td>{{  $data->phone_number }}</td>
+                                        <td>{{  $data->address }}</td>
                                         <td>{{  $data->city }}</td>
                                         <td>{{  $data->country }}</td>
-                                        <td>{{  $data->website }}</td>
-                                        <td>{{  $data->admin_name }}</td>
-                                        <td>{{  $data->admin_email}}</td>
-                                        <td>{{  $data->status}}</td>
+                                        <td>{{  $data->hospital }}</td>
+                                        <td>{{  $data->diagnosed }}</td>
+                                        <td>{{  $data->symptoms }}</td>
+                                        <td>{{  $data->user_id }}</td>
+                                        <td>{{  $data->status }}</td>
+
                                         <td> <button type="button" class="btn btn-success edit mr-2 btn-sm btn-icon-text"
                                                 data-toggle="modal" data-target="#editModal" id="{{ $data->id }}">
                                                 <i class="ti-pencil btn-icon-prepend"></i>
@@ -260,6 +298,7 @@
             @endphp
                                 @endforeach
 
+
                             </tbody>
                         </table>
                     </div>
@@ -270,7 +309,6 @@
 
 @endsection
 
-
 <script>
     $(document).ready(function () {
 
@@ -280,26 +318,37 @@
             var id = $(this).attr('id');
             // alert(id)
             $.ajax({
-                url: '/dashboard/hospital/' + id + '/edit',
+                url: '/dashboard/vaccination/' + id + '/edit',
                 method: 'GET'
             }).done(function (val) {
-                console.log(val)
+                // console.log(val);
                 $.each(val, function (k, v) {
                     $('#e_id').val(v['id']);
-                    $('#e_hospital_name').val(v['hospital_name']);
-                    $('#e_hospital_type').val(v['hospital_type']);
-                    $('#e_address').val(v['address']);
+                    $('#e_name').val(v['name']);
+                    $('#e_cnic').val(v['cnic']);
+                    $('#e_dob').val(v['dob']);
+                    $('#e_gender').val(v['gender']).prop('checked', true);
+                    $('#e_email').val(v['email']);
                     $('#e_phone_number').val(v['phone_number']);
+                    $('#e_address').val(v['address']);
                     $('#e_city').val(v['city']);
                     $('#e_country').val(v['country']);
-                    $('#e_website').val(v['website']);
-                    $('#e_admin_name').val(v['admin_name']);
-                    $('#e_admin_email').val(v['admin_email']);
+                    $('#e_hospital').val(v['hospital']);
                     $('#e_status').val(v['status']);
-                })
-            })
-        });
+                    $('#e_diagnosed').val(v['diagnosed']).prop('checked', true);
 
+                    if (v['symptoms']) {
+                        let symptomsArray = v['symptoms'].split(','); // Comma-separated values
+                        $("input[name='e_symptoms[]']").each(function () {
+                            $(this).prop('checked', symptomsArray.includes($(this).val()));
+                        });
+                    }
+
+                    $('#e_hospital').val(v['hospital']).change();
+
+                })
+            });
+        });
 
         // Edit AJAX Code
         $('#updateForm').submit(function (e) {
@@ -308,7 +357,7 @@
             var formData = new FormData(this)
 
             $.ajax({
-                url: '/dashboard/hospital/' + id, // Resource route follow karein
+                url: '/dashboard/vaccination/' + id, // Resource route follow karein
                 method: 'POST',
                 data: formData,
                 processData: false,
@@ -326,22 +375,20 @@
 
 
 
-
         // Delete functionality
         $(".deleteBtn").click(function () {
-            let hospitalId = $(this).data("id");
-            console.log(hospitalId);
+            let vaccinationId = $(this).data("id");
+            console.log(vaccinationId);
 
-            $("#delete_hospital_id").val(hospitalId);
+            $("#delete_vaccination_id").val(vaccinationId);
         });
-
 
         // Delete AJAX functionality
         $('#deleteForm').click(function () {
-            var id = $("#delete_hospital_id").val();
+            var id = $("#delete_vaccination_id").val();
             // console.log(id);
             $.ajax({
-                url: '/dashboard/hospital/' + id,
+                url: '/dashboard/vaccination/' + id,
                 type: 'DELETE',
                 data: {
                     _token: $('input[name="_token"]').val(),
@@ -358,8 +405,8 @@
             });
         });
 
+
+
     });
-
-
 
 </script>

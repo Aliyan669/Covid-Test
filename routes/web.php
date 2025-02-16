@@ -4,6 +4,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\VaccinationController;
 use Illuminate\Support\Facades\Route;
 
 // Frontend Controller
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Frontend Controller with Grouping 
-Route::controller(HomeController::class)->group(function(){
+Route::controller(HomeController::class)->group(function () {
     Route::get('/', "Home");
     Route::get('prevention', "Prevention");
     Route::get('symptoms', "Symptoms");
@@ -50,5 +51,9 @@ Route::middleware([
 
 // Route::get('/dashboard/allhospital',  [hospitalController::class, 'index']);
 // Route::get('/dashboard/addhospital', [hospitalController::class,'create']);
-Route::resource('/dashboard/hospital', HospitalController::class);
+Route::resource('/dashboard/hospital', HospitalController::class)->middleware('auth');
+
+Route::resource('/dashboard/vaccination', VaccinationController::class)->middleware('auth');
+
+
 

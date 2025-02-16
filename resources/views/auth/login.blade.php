@@ -1,8 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid | Login</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2926/2926534.png" type="image/x-icon">
+</head>
+<body >
+
 <x-guest-layout>
     <x-authentication-card>
         
         <x-slot name="logo">
-        <h1>Login</h1>
+        <img width="180px"  class="mb-4" src="{{ asset('frontend/images/Covid.png')}}" >
         
             <!-- <x-authentication-card-logo /> -->
            
@@ -50,3 +61,6 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+
+</body>
+</html>
