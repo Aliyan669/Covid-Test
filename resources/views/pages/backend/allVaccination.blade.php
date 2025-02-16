@@ -141,8 +141,9 @@
                                         <div class="col-sm-9">
                                             <select id="e_status" id="e_status" name="e_status" class="form-control">
                                                 <option disabled selected>Select Type</option>
-                                                <option value="Active">Active</option>
-                                                <option alue="In Active">In Active</option>
+                                                <option value="Pending">Pending</option>
+                                                <option alue="Approved">Approved</option>
+                                                <option alue="Disapproved">Disapproved</option>
                                             </select>
                                         </div>
                                     </div>

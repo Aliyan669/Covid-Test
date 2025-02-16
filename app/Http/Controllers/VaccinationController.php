@@ -47,7 +47,7 @@ class VaccinationController extends Controller
         $symptoms = is_array($request->symptoms) ? implode(',', $request->symptoms) : '';
 
 
-        DB::select('INSERT INTO `vaccinations` (`name`, `cnic`, `dob`, `gender`, `email`, `phone_number`, `address`, `city`, `country`, `hospital`,  `diagnosed` ,  `symptoms`, `user_id`,`created_at`, `status`) VALUES ("' . $name . '", "' . $cnic . '", "' . $dob . '", "' . $gender . '" ,"' . $email . '", "' . $phone_number . '", "' . $address . '", "' . $city . '", "' . $country . '", "' . $hospital . '", "' . $diagnosed . '",   "' . $symptoms . '",  "' . $user_id . '", CURRENT_TIMESTAMP, "Active");');
+        DB::select('INSERT INTO `vaccinations` (`name`, `cnic`, `dob`, `gender`, `email`, `phone_number`, `address`, `city`, `country`, `hospital`,  `diagnosed` ,  `symptoms`, `user_id`,`created_at`, `status`) VALUES ("' . $name . '", "' . $cnic . '", "' . $dob . '", "' . $gender . '" ,"' . $email . '", "' . $phone_number . '", "' . $address . '", "' . $city . '", "' . $country . '", "' . $hospital . '", "' . $diagnosed . '",   "' . $symptoms . '",  "' . $user_id . '", CURRENT_TIMESTAMP, "Pending");');
 
 
         return redirect('/dashboard/vaccination/create')->with([
